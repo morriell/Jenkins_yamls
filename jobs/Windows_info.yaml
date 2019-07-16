@@ -1,0 +1,17 @@
+- job:
+    name: Windows_info
+    description: 'Automatically generated test'
+    project-type: freestyle
+
+    builders:
+      - powershell: |
+            hostname
+            [System.Environment]::OSVersion.Version.Major
+            (Get-CIMInstance -Class 'CIM_Processor').NumberOfCores
+            (Get-CIMInstance -Class 'CIM_Processor').NumberOfLogicalProcessors
+            (systeminfo | Select-String 'Total Physical Memory:').ToString().Split(':')[1].Trim()
+            Get-PSDrive C | Select-Object Used,Free
+
+    publishers:
+      - archive:
+          artifacts: 'Windows_info.txt'

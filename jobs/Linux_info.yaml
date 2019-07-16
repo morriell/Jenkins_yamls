@@ -1,0 +1,18 @@
+- job:
+    name: Linux_info
+    description: 'Automatically generated test'
+    project-type: freestyle
+
+    builders:
+      - shell: |
+            #!/bin/bash
+            echo "Host name: `hostname`
+            OS version: `uname -r`
+            CPU cores: `nproc`
+            RAM: `vmstat -s | grep 'total memory' | awk '{print $1 " " $2}'`
+            HDD size: for C:\ or / `df -h| grep -E '/$' |awk '{print $2}'`
+            HDD disk usage: for C:\ or / " `df -h| grep -E '/$' |awk '{print $5}' " >> Linux_info.txt
+            cat Linux_info.txt
+    publishers:
+      - archive:
+          artifacts: 'Linux_info.txt'
