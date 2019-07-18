@@ -5,9 +5,9 @@
       - choice:
           name: Platform
           choices:
+              - windows and linux
               - linux
               - windows
-              - windows and linux
           description: "Choose a platform to run a job on"
       - string:
           name: Git refspec
