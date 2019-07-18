@@ -3,6 +3,8 @@
     node: 'windows'
     description: 'Automatically generated test'
     project-type: freestyle
+    wrappers:
+      - workspace-cleanup
 
     builders:
       - powershell: 
