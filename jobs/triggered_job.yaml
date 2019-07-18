@@ -1,0 +1,57 @@
+- job:
+    name: 'Triggered_job'
+    node: linux
+    parameters:
+      - choice:
+          name: Platform
+          choices:
+              - linux
+              - windows
+              - windows and linux
+          description: "Choose a platform to run a job on"
+      - string:
+          name: Git refspec
+          default: origin/master
+          description: "Specify the branche or tag of a repository."
+
+    description: 'Automatically generated test'
+    project-type: freestyle
+
+    scm:
+        - git:
+            url: git@github.com:morriell/jenkins-test.git
+            branches:
+                - origin/master
+            credentials-id: morriell
+    triggers:
+        - github
+
+    builders:
+        - conditional-step:
+            condition-kind: strings-match
+            condition-string1: $Platform
+            condition-string2: "windows"
+            steps:
+                - trigger-builds:
+                    - project: 
+                      - windows_info
+
+        - conditional-step:
+            condition-kind: strings-match
+            condition-string1: $Platform
+            condition-string2: "linux"
+            steps:
+                - trigger-builds:
+                    - project: 
+                      - linux_info
+
+        - conditional-step:
+            condition-kind: strings-match
+            condition-string1: $Platform
+            condition-string2: "windows and linux"
+            steps:
+                - trigger-builds:
+                    - project: 
+                      - windows_info
+                      - linux_info
+
