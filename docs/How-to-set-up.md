@@ -1,11 +1,11 @@
 How to set up the workflow locally
 ==================================
 
-1. (Install Jenkins)[https://jenkins.io/doc/book/installing/]. Remember the 
+1. [Install Jenkins](https://jenkins.io/doc/book/installing/). Remember the 
 password.
-2. (Configure Jenkins)[Configure\_Jenkins.md]
+2. [Configure Jenkins](Configure\_Jenkins.md)
 
-3. (Install Jenkins Job Builder)[https://docs.openstack.org/infra/jenkins-job-builder/]
+3. [Install Jenkins Job Builder](https://docs.openstack.org/infra/jenkins-job-builder/)
 4. Clone **Jenkins\_yamls** repository:
 
 ```
@@ -34,4 +34,4 @@ installing Jenkins in a step 1.
 jenkins-jobs --conf ./jenkins_jobs.ini update jobs
 ```
 
-7. [Check](How-To-check.md) the workflow running.
+7. [Check](How-to-check.md) the workflow running.

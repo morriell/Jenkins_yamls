@@ -3,6 +3,10 @@ Jenkins\_yamls
 
 A repo for yaml-configuration files
 
+* [How to set up the workflow locally](docs/How-to-set-up.md)
+	* [Configure Jenkins](docs/Configure_Jenkins.md)
+* [How to check the workflow](docs/How-to-check.md)
+
 The task
 ========
 
@@ -48,18 +52,3 @@ specify:
 software which is always available on a minimal OS install.
 
 7. The jobs must not require admin privileges.
-
-Jenkins setups
-==============
-
-* Create SSH key. Place one to Jenkins and another one to GitHub
-* Create a token for hook management:
-	* Create a token on GitHub with *admin_repo* priviliges; 
-	* Place this token to Jenkins as a "Secret text" credentials;
-	* In Jenkins global settings in a GitHub section, add a GitHub server using
-	credentials added on the previous step; Check "Manage hooks"
-* In a job that is supposed to be triggered by a hook:
-	* in "SCM" section fill in Git repository settings (repository URL, 
-	credentials, branch); SSH key from the first step may be used;
-	* in a "Triggers" section check "GitHub hook trigger for GITScm polling".
-* A hook on GitHub will be created automatically
