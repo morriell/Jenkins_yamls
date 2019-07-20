@@ -1,11 +1,21 @@
-echo "Hostname: $(hostname)" | out-file windows_info.txt
+
+$ram = $(Get-WmiObject win32_physicalmemory | Select-Object -ExpandProperty 'Capacity' | Measure-Object -Sum| Select-Object -ExpandProperty 'Sum') / 1024 / 1024
+$ram = [math]::Round($ram)
+
+
+$hdd_used = $(Get-PSDrive C | Select-Object -ExpandProperty Used)
+$hdd_free = $(Get-PSDrive C | Select-Object -ExpandProperty Free)
+$hdd_total = ( $hdd_used + $hdd_free ) / 1024 / 1024 / 1024
+$hdd_total = [math]::Round($hdd_total)
+$hdd_used = $hdd_used / 1024 / 1024 / 1024
+$hdd_used = [math]::Round($hdd_used)
+
+echo "Host name: $(hostname)" | out-file windows_info.txt
 echo "OS version: $([System.Environment]::OSVersion.Version.Major)" | out-file -Append windows_info.txt
 echo "CPU cores: $(Get-WmiObject -class Win32_processor | Select-Object -ExpandProperty  'NumberOfCores')" | out-file -Append windows_info.txt
-echo "RAM: $(Get-WmiObject win32_physicalmemory | Select-Object -ExpandProperty 'Capacity' | Measure-Object -Sum| Select-Object -ExpandProperty 'Sum')" | out-file -Append windows_info.txt
 
-$hdd_used=$(Get-PSDrive C | Select-Object -ExpandProperty Used)
-$hdd_free=$(Get-PSDrive C | Select-Object -ExpandProperty Free)
-$hdd_total = $hdd_used + $hdd_free
-echo "HDD size: for C:\ or / $hdd_total" | out-file -Append windows_info.txt
+echo "RAM: $ram MB" | out-file -Append windows_info.txt
 
-echo " HDD disk usage: for C:\ or / $hdd_used" | out-file -Append windows_info.txt
+echo "HDD size: for C:\ $hdd_total GB" | out-file -Append windows_info.txt
+
+echo "HDD disk usage: for C:\ $hdd_used GB" | out-file -Append windows_info.txt
