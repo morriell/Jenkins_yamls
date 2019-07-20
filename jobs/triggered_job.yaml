@@ -10,7 +10,7 @@
               - windows
           description: "Choose a platform to run a job on"
       - string:
-          name: Git refspec
+          name: Git_refspec
           default: origin/master
           description: "Specify the branche or tag of a repository."
 
@@ -21,7 +21,7 @@
         - git:
             url: git@github.com:morriell/jenkins-test.git
             branches:
-                - origin/master
+                - $Git_refspec
             credentials-id: morriell
     triggers:
         - github
