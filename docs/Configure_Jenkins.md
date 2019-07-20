@@ -13,9 +13,9 @@ install it):
 
 * Create SSH key with **ssh-keygen**. Place one to Jenkins credentials and 
 another one to GitHub. In Jenkins the **ID** of credentials should be 
-**morriell** as this id is used in (one of jobs)[jobs/triggered\_job.yaml]
+**morriell** as this id is used in [one of jobs](../jobs/triggered\_job.yaml)
 * In a repository, changes in wich should trigger Jenkins jobs (in my case this 
-is (jenkins-test)[https://github.com/morriell/jenkins-test] repo), create a 
+is [jenkins-test](https://github.com/morriell/jenkins-test) repo), create a 
 token for hook management:
 	* Create a token on GitHub with **admin_repo** priviliges; 
 	* Place this token to Jenkins as a "Secret text" credentials;

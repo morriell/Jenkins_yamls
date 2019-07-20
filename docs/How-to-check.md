@@ -4,18 +4,18 @@ How to try that it works
 WARNING
 -------
 The system is set up on my Home PC, so for some reason it may be out-of-work. In 
-case you need to check it, but [Jenkins](https://github.com/morriell/jenkins-test) 
+case you need to check it, but [Jenkins](http://37.145.114.185:8080/) 
 or some of it's slaves is off, please contact me <morriell@yandex.ru>.
 
 Automatically per-commit
 ------------------------
 
 1. Push any commit to [Jenkins-test](https://github.com/morriell/jenkins-test) 
-repo
-2. Go to [Jenkins](http://37.145.114.185:8080) and watch the 
-[Triggered job](http://37.145.114.185:8080/job/Triggered\_job/) working. This 
-job contains links to downstream jobs. Those downstream jobs that were triggered
-on corresponding nodes and contain artifacts.
+repo (or any other repo for which you have configured the hook).
+2. Go to [Jenkins](http://37.145.114.185:8080) (or your local clone of Jenkins) 
+and watch the [Triggered job](http://37.145.114.185:8080/job/Triggered\_job/) 
+working. This job contains links to downstream jobs. Those downstream jobs that 
+were triggered on corresponding nodes and contain artifacts.
 
 Manually
 --------

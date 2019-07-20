@@ -24,7 +24,9 @@ password=*jenkins_admin_pass*
 url=http://127.0.0.1:8080
 
 ```
+
 *This file was excluded from the repo as it contains sencible data*
+
 The password for this configuration is the same as you have used while 
 installing Jenkins in a step 1.
 
